@@ -1,6 +1,6 @@
-use crate::token::{Token, TOKEN};
+use crate::token::{TOKEN};
 
-pub struct Lexer{
+pub struct Lexar{
 
     pub input: Vec<u8>,
     pub posiiton:usize,
@@ -8,9 +8,9 @@ pub struct Lexer{
     pub ch: u8,
 }
 
-impl Lexer {
-    pub fn new(input: String) -> Lexer {
-        let mut l = Lexer { 
+impl Lexar {
+    pub fn new(input: String) -> Lexar {
+        let mut l = Lexar { 
             input: input.into_bytes(), 
             posiiton: 0, 
             read_position: 0, 

@@ -1,3 +1,4 @@
+use crate::lexar::Lexar;
 
 pub enum TOKEN {
     IDENT(String),
@@ -13,7 +14,7 @@ pub enum TOKEN {
     LPAREN,
     RPAREN,
     RBRACE,
-    LBRACE
+    LBRACE,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -22,28 +23,24 @@ pub struct Token {
     pub literal: String,
 }
 
-
-
 #[test]
 fn TestNextToken() {
-
-    let input: String = "=+(){},;";
+    let input: String = "=+(){},;".to_owned();
     let mut lexar = Lexar::new(input);
-
     let test = vec![
         TOKEN::ASSIGN,
         TOKEN::PLUS,
         TOKEN::LPAREN,
         TOKEN::LBRACE,
         TOKEN::RBRACE,
-        TOEKN::COMMA,
+        TOKEN::COMMA,
         TOKEN::SEMICOLON,
-        TOKEN::EOF
+        TOKEN::EOF,
     ];
 
     for token in test {
-        let nextToken = lexar.NextToken();
-        println!("expected {:?}, recieved {:?}", token, nextToken)
+        let next_Token = lexar.next_token();
+        println!("expected {:?}, recieved {:?}", token, next_Token)
     }
-
 }
+
